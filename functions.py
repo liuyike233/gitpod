@@ -2,12 +2,12 @@ import requests
 import time
 import json
 
-#pip install -t /usr/local/lib/python3.7/dist-packages
+
 class search:
-    songnum = 10
+    songnum = 100
     currentPage = 1
     songname = ""
-    songmid = ""
+    songmid = []
     url = "https://c.y.qq.com/soso/fcgi-bin/client_search_cp?aggr=1&cr=1&flag_qc=0&p=[当前页数]&n=[数量]&w=[歌曲名]"
 
 
@@ -20,6 +20,7 @@ class search:
 
 
     def begin(self):
+        self.songmid=[]
         while self.songname == "":
             self.songname = input("请输入要搜索的歌曲名：")
         else:
@@ -41,7 +42,12 @@ class search:
                 for singers in one["singer"]:
                     temp += singers["name"] + "/"
                 temp = temp[:-1]
-                print(one["songname"],temp,one["songmid"])
+                self.songmid.append(one["songmid"])
+                print(len(self.songmid),one["songname"],temp,one["songmid"])
+            temp = input("请选择要下载的歌曲：")
+
+            req = requests.get("https://api.233i.cn/qqmusic/?songmid="+self.songmid[int(temp)-1])
+            print(req.text)
 
 
 
