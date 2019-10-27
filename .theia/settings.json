@@ -1,4 +1,9 @@
 {
    "python.pythonPath": "/home/gitpod/.pyenv/shims/python3",
-   "editor.autoSave": "off"
+   "editor.autoSave": "off",
+   "python.linting.enabled": false,
+   //"workbench.colorTheme": "One Dark Pro Vivid",
+   "editor.smoothScrolling": true,
+    "editor.cursorSmoothCaretAnimation": true,
+
 }
